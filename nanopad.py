@@ -3,11 +3,13 @@ from bs4 import BeautifulSoup
 import os
 import hashlib
 
+
 def getText(dontpad):
     link = requests.get(dontpad)
     soup = BeautifulSoup(link.text, "html.parser")
     text = soup.find('textarea').get_text()
     return text
+
 
 def end():
     os.system("clear")
@@ -20,11 +22,12 @@ def read(dontpad):
     text = getText(dontpad)
     print(text)
     mainmenu = input(
-        "Press r to return to main menu, or any other key to exit\n")
+        "Press r to return to main menu, or any other key to exit\n").lower()
     if mainmenu == "r":
         main()
     else:
         end()
+
 
 def write(dontpad):
     text = getText(dontpad)
@@ -44,11 +47,12 @@ def write(dontpad):
     os.system("clear")
 
     mainmenu = input(
-        "Press r to return to main menu, or any other key to exit\n")
+        "Press r to return to main menu, or any other key to exit\n").lower()
     if mainmenu == "r":
         main()
     else:
         end()
+
 
 def main():
     try:
@@ -74,7 +78,7 @@ def main():
         # ve se o cara quer usar hash na url
         valid = False
         while(valid == False):
-            hashopt = input("Do you use hash for your address? [y,n] ")
+            hashopt = input("Do you use hash for your address? [y,n] ").lower()
             if(hashopt == "y" or hashopt == "n"):
                 valid = True
             else:
@@ -120,6 +124,7 @@ def main():
 
     except EOFError:
         end()
+
 
 # chamada inicial da main
 main()
