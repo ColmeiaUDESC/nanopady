@@ -1,7 +1,7 @@
 # Nanopady
-A small project that aims the use of the site _dontpad.com_ through the Linux terminal using python.
+A small project that aims the use of the site _dontpad.com_ through the Linux terminal using python._(Now working on windows!)__
 
-One of the main goals of the project was to the students involved to learn how to make a program in python that interact with the internet.
+One of the main goals of the project was to get the students involved to learn how to make a program in python that interacts with the internet.
 
 **Dependencies**
 
