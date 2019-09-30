@@ -17,24 +17,18 @@ def end():
     exit()
 
 
-def read(dontpad):
-    os.system("clear")
-    text = getText(dontpad)
-    print(text)
-    mainmenu = input(
-        "Press r to return to main menu, or any other key to exit\n").lower()
-    if mainmenu == "r":
-        main()
-    else:
-        end()
-
-
 def write(dontpad):
     text = getText(dontpad)
     buffer = open("buffer.txt", "w+")
     buffer.write(text)
     buffer.close()
-    os.system("nano buffer.txt")
+    print("What text editor do you want to use?\n")
+    print("1 - Nano (default)")
+    print("2 - Vim")
+    if(input() == "2"):
+        os.system("vim buffer.txt")
+    else:
+        os.system("nano buffer.txt")
     with open('buffer.txt', 'r') as myfile:
         text = myfile.read()
     data = {'text': text}
@@ -59,21 +53,11 @@ def main():
         # clear the screen
         os.system("clear")
 
-        # options
-        valid = False
-        while(valid == False):
-            print("Welcome to nanopady!\n")
-            print("Ctrl+d to exit\n")
-            print("What do you want to do?\n")
-            print("1 - Read from a dontpad address (dontpad.com/address)")
-            print("2 - Write on a dontpad address (dontpad.com/address)")
-            opt = input()
-            if(opt == "1" or opt == "2"):
-                valid = True
-            else:
-                print("Enter a valid option!")
+        print("Welcome to nanopady!\n")
+        print("Ctrl+d to exit\n")
+        
         # address do dontpad
-        endereco = input("Type the dontpad address: ")
+        endereco = input("Please enter the dontpad address (dontpad.com/address): ")
 
         # check if the user wants to use hash on the URL
         valid = False
@@ -116,11 +100,8 @@ def main():
                 else:
                     print("Enter a valid option!")
 
-        # runs the option mainmenu
-        if opt == "1":
-            read("http://dontpad.com/"+endereco+"/")
-        elif opt == "2":
-            write("http://dontpad.com/"+endereco+"/")
+
+        write("http://dontpad.com/"+endereco+"/")
 
     except EOFError:
         end()
