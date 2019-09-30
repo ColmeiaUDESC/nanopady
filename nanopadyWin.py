@@ -43,7 +43,7 @@ def write(dontpad):
     # cls notepad buffer
     os.system("del /f buffer.txt")
 
-    # limpa a tela printa o dontpad
+    # clear the screen
     os.system("cls")
 
     mainmenu = input(
@@ -56,10 +56,10 @@ def write(dontpad):
 
 def main():
     try:
-        # limpa o display
+       # clear the screen
         os.system("cls")
 
-        # opções
+        # options
         valid = False
         while(valid == False):
             print("Welcome to notepady!\n")
@@ -72,10 +72,10 @@ def main():
                 valid = True
             else:
                 print("Enter a valid option!")
-        # endereço do dontpad
+        # address do dontpad
         endereco = input("Type the dontpad address: ")
 
-        # ve se o cara quer usar hash na url
+        # check if the user wants to use hash on the URL
         valid = False
         while(valid == False):
             hashopt = input("Do you use hash for your address? [y,n] ").lower()
@@ -84,10 +84,10 @@ def main():
             else:
                 print("Enter a valid option!")
 
-        # processa a opção de hash
+        # runs the hash function
         if (hashopt == "y"):
 
-            # limpa o display
+            # clear the screen
             os.system("cls")
 
             valid = False
@@ -100,7 +100,7 @@ def main():
                 print("4 - SHA512")
                 hashopt = int(input())
 
-                # checa a opção do cara
+                # check the users option
                 if hashopt == 1:
                     endereco = hashlib.md5(endereco.encode()).hexdigest()
                     valid = True
@@ -116,7 +116,7 @@ def main():
                 else:
                     print("Enter a valid option!")
 
-        # processa opção do mainmenu
+        # runs the option mainmenu
         if opt == "1":
             read("http://dontpad.com/"+endereco+"/")
         elif opt == "2":
@@ -126,5 +126,5 @@ def main():
         end()
 
 
-# chamada inicial da main
+# main initial call
 main()
